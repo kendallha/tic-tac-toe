@@ -1,0 +1,26 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /* align-items: stretch; */
+  justify-content: stretch;
+  background-color: pink;
+}
+
+.player-wins {
+  background: linear-gradient(#002F16, #FAFFFC);
+  height: 100%;
+  /* flex: 1; */
+  width: 25vw;
+}
+
+main {
+  height: 100%;
+  /* flex: 1; */
+  width: 50vw;
+}
