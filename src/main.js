@@ -38,13 +38,13 @@ function addToken(event) {
 }
 
 function evaluateGameStatus() {
-  if (game.player1Wins) {
+  if (game.winner === 'player1') {
     gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
     class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
-  } else if (game.player2Wins) {
+  } else if (game.winner === 'player2') {
       gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
-  } else if (game.checkForTie) {
+  } else if (game.checkForTie()) {
       gameHeading.innerHTML = `It's a Tie!`;
   }
 }
