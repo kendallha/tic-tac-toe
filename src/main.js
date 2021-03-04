@@ -17,15 +17,20 @@ function startGame() {
   for (var i = 0; i < gameSquare.length; i++) {
     gameSquare[i].innerHTML = '';
   }
-  gameInfo.innerHTML = `<h1 id="gameHeading" class="game-heading">It's
-  <img id="turnToken" class="turn-token" src="assets/octopus.png"/>'s Turn</h1>`
+  switchTokenInHeader();
+  // toggle(gameInfo);
+  // toggle(gameResult);
 }
 
+function toggle(element) {
+  element.classList.toggle('hidden');
+
+}
 function takeATurn() {
   addToken(event);
   evaluateGameStatus();
   switchTokenInHeader();
-  updateWins();
+  updateScoreCard();
 }
 
 function addToken(event) {
@@ -40,21 +45,28 @@ function addToken(event) {
 
 function evaluateGameStatus() {
   if (game.winner === 'player1') {
-    gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
+    toggle(gameInfo);
+    toggle(gameResult);
+    gameResult.innerHTML = `<h1 class="instructions"><img id="turnToken"
     class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
     setTimeout(startGame, 5000);
   } else if (game.winner === 'player2') {
-      gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
+      toggle(gameInfo);
+      toggle(gameResult);
+      gameResult.innerHTML = `<h1 class="instructions"><img id="turnToken"
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
       setTimeout(startGame, 5000);
   } else if (game.checkForTie()) {
-      gameInfo.innerHTML = `It's a Tie!`;
+      toggle(gameInfo);
+      toggle(gameResult);
+      gameResult.innerHTML = `It's a Tie!`;
       setTimeout(startGame, 3000);
   }
 }
 
 function switchTokenInHeader() {
   console.log("turn token");
+  console.log(game.turn);
   if (game.turn === 'player2') {
     currentTurnToken.src = 'assets/lobster.png';
   } else {
@@ -63,7 +75,7 @@ function switchTokenInHeader() {
 }
 
 
-function updateWins() {
+function updateScoreCard() {
   if (game.player1.wins.length === 1) {
     player1Wins.innerText = `1 Win`;
   } else if (game.player2.wins.length === 1) {
