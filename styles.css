@@ -9,18 +9,22 @@ body {
   display: flex;
   /* align-items: stretch; */
   justify-content: stretch;
-  background-color: pink;
+  background-image: url("assets/waves6.jpg");
+  background-size: cover;
 }
 
 .player-wins {
-  background: linear-gradient(#002F16, #FAFFFC);
   height: 100%;
-  /* flex: 1; */
   width: 25vw;
+  display: flex;
+  justify-content: center;
 }
 
 main {
   height: 100%;
-  /* flex: 1; */
   width: 50vw;
+  margin-top: 0;
+  background: rgba(241, 247, 250, 0.7);
+  display: flex;
+  justify-content: center;
 }
