@@ -44,7 +44,7 @@ class Game {
     if ((this.player1Spots.length + this.player2Spots.length) === 9 ) {
       console.log('This game is a tie!');
       return true;
-      //startGame();
+  
     }
   }
 
