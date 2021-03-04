@@ -1,16 +1,25 @@
 //Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
 var gameHeading = document.querySelector('#gameHeading');
+var gameResult = document.querySelector('#gameResult');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
 var currentTurnToken = document.querySelector('#turnToken');
+var gameSquare = document.querySelectorAll('.game-square');
 var game;
+var octopus = new Player(1, )
 //event listeners
 window.addEventListener('load', startGame);
 gameBoard.addEventListener('click', takeATurn);
 
 function startGame() {
   game = new Game(Date.now());
+  for (var i = 0; i < gameSquare.length; i++) {
+    gameSquare[i].innerHTML = '';
+  }
+  console.log('its a new game');
+  gameHeading.innerHTML = `<h1 id="gameHeading" class="game-heading">It's
+  <img id="turnToken" class="turn-token" src="assets/octopus.png"/>'s Turn</h1>`
 }
 
 function takeATurn() {
@@ -34,11 +43,14 @@ function evaluateGameStatus() {
   if (game.winner === 'player1') {
     gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
     class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
+    setTimeout(startGame, 5000);
   } else if (game.winner === 'player2') {
       gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
+      setTimeout(startGame, 5000);
   } else if (game.checkForTie()) {
       gameHeading.innerHTML = `It's a Tie!`;
+      setTimeout(startGame, 3000);
   }
 }
 
