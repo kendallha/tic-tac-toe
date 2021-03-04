@@ -1,3 +1,40 @@
- <script src="./src/player.js"></script>
- <script src="./src/game.js"></script>
- <script src="./src/main.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tic Tac Toe</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link/>
+    <link rel="stylesheet" type="text/css" href="./styles.css"/>
+  </head>
+  <body>
+    <section class="player-wins">
+      <header>
+        <img class="player-token" src="assets/lobster.png"/>
+        <h3 class="number-wins"></h3>
+      </header>
+    </section>
+    <main class="game-section">
+      <h1 class="instructions">It's<img class="turn-token" src="assets/lobster.png"/>'s Turn</h1>
+      <section class="game-board">
+        <section id="a" class="game-square"></section>
+        <section id="b" class="game-square"></section>
+        <section id="c" class="game-square"></section>
+        <section id="d" class="game-square"></section>
+        <section id="e" class="game-square"></section>
+        <section id="f" class="game-square"></section>
+        <section id="g" class="game-square"></section>
+        <section id="h" class="game-square"></section>
+        <section id="i" class="game-square"></section>
+      </section>
+    </main>
+    <section class="player-wins">
+      <header>
+        <img class="player-token" src="assets/octopus.png"/>
+        <h3 class="number-wins"></h3>
+      </header>
+    </section>
+    <script src="./src/player.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
