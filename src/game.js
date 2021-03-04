@@ -1,11 +1,12 @@
 class Game {
   constructor(id) {
-    this.player1 = new Player(1, 'frog');
-    this.player2 = new Player(2, 'sheep');
+    this.player1 = new Player(1, 'octopus');
+    this.player2 = new Player(2, 'lobster');
     this.turn = 'player1';
     this.gameId = id;
     this.player1Spots = [];
     this.player2Spots = [];
+    this.winner;
 
   }
 
@@ -25,17 +26,17 @@ class Game {
 
 
   checkForWinner() {
-  var winningCombos = [['a','b','c'],['d','e','f'],['g','h','i'],['a','d','g'],
+    var winningCombos = [['a','b','c'],['d','e','f'],['g','h','i'],['a','d','g'],
     ['b','e','h'],['c','f','i'],['c','e','g'],['a','e','i']];
-   for (var i = 0; i < winningCombos.length; i++) {
+    for (var i = 0; i < winningCombos.length; i++) {
       if ((this.player1Spots.includes(winningCombos[i][0])) &&
       (this.player1Spots.includes(winningCombos[i][1])) && (this.player1Spots.includes(winningCombos[i][2]))) {
         this.player1.wins.push(this.gameId);
-        console.log('Player 1 wins!');
+        this.winner = 'player1';
       } else if ((this.player2Spots.includes(winningCombos[i][0])) &&
       (this.player2Spots.includes(winningCombos[i][1])) && (this.player2Spots.includes(winningCombos[i][2]))) {
         this.player2.wins.push(this.gameId);
-        return 'Player 2 wins!';
+        this.winner = 'player2';
       }
     }
   }
@@ -44,11 +45,8 @@ class Game {
     if ((this.player1Spots.length + this.player2Spots.length) === 9 ) {
       console.log('This game is a tie!');
       return true;
-  
     }
   }
 
 
   }
-
-}
