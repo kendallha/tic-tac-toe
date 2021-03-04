@@ -1,17 +1,8 @@
 //Query selector vars:
-// var squareA = document.querySelector(#'a');
-// var squareB = document.querySelector(#'a');
-// var squareC = document.querySelector(#'a');
-// var squareD = document.querySelector(#'a');
-// var squareE = document.querySelector(#'a');
-// var squareF = document.querySelector(#'a');
-// var squareG = document.querySelector(#'a');
-// var squareH = document.querySelector(#'a');
-// var squareI = document.querySelector(#'a');
 var gameBoard = document.querySelector('#gameBoard');
 var gameHeading = document.querySelector('#gameHeading');
-// var player1Token = document.querySelector('#octopus');
-// var player2Token = document.querySelector('#lobster');
+var player1Wins = document.querySelector('#player1Wins');
+var player2Wins = document.querySelector('#player2Wins');
 var currentTurnToken = document.querySelector('#turnToken');
 var game;
 //event listeners
@@ -25,8 +16,10 @@ function startGame() {
 function takeATurn() {
   addToken(event);
   evaluateGameStatus();
-
+  switchTokenInHeader();
+  updateWins();
 }
+
 function addToken(event) {
   if (game.turn === 'player1') {
     event.target.innerHTML = '<img class="player-token" src="assets/octopus.png">';
@@ -46,5 +39,25 @@ function evaluateGameStatus() {
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
   } else if (game.checkForTie()) {
       gameHeading.innerHTML = `It's a Tie!`;
+  }
+}
+
+function switchTokenInHeader() {
+  if (game.turn === 'player2') {
+    currentTurnToken.src = 'assets/lobster.png';
+  } else {
+    currentTurnToken.src = 'assets/octopus.png';
+  }
+}
+
+
+function updateWins() {
+  if (game.player1.wins.length === 1) {
+    player1Wins.innerText = `1 Win`;
+  } else if (game.player1.wins.length === 1) {
+    player2Wins.innerText = `1 Win`;
+  } else {
+    player1Wins.innerText = `${game.player1.wins.length} Wins`;
+    player2Wins.innerText = `${game.player2.wins.length} Wins`;
   }
 }
