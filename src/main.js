@@ -1,24 +1,23 @@
 //Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
-var gameHeading = document.querySelector('#gameHeading');
+var gameInfo = document.querySelector('#gameInfo');
 var gameResult = document.querySelector('#gameResult');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
 var currentTurnToken = document.querySelector('#turnToken');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
-var octopus = new Player(1, )
 //event listeners
 window.addEventListener('load', startGame);
 gameBoard.addEventListener('click', takeATurn);
 
 function startGame() {
   game = new Game(Date.now());
+  game.initiateNewGame();
   for (var i = 0; i < gameSquare.length; i++) {
     gameSquare[i].innerHTML = '';
   }
-  console.log('its a new game');
-  gameHeading.innerHTML = `<h1 id="gameHeading" class="game-heading">It's
+  gameInfo.innerHTML = `<h1 id="gameHeading" class="game-heading">It's
   <img id="turnToken" class="turn-token" src="assets/octopus.png"/>'s Turn</h1>`
 }
 
@@ -31,7 +30,7 @@ function takeATurn() {
 
 function addToken(event) {
   if (game.turn === 'player1') {
-    event.target.innerHTML = '<img class="player-token" src="assets/octopus.png">';
+    event.target.innerHTML = '<img class="player-token" src="assets/octopus.png"/>';
   } else {
     event.target.innerHTML = '<img class="player-token" src="assets/lobster.png"/>';
   }
@@ -41,20 +40,21 @@ function addToken(event) {
 
 function evaluateGameStatus() {
   if (game.winner === 'player1') {
-    gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
+    gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
     class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
     setTimeout(startGame, 5000);
   } else if (game.winner === 'player2') {
-      gameHeading.innerHTML = `<h1 class="instructions"><img id="turnToken"
+      gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
       setTimeout(startGame, 5000);
   } else if (game.checkForTie()) {
-      gameHeading.innerHTML = `It's a Tie!`;
+      gameInfo.innerHTML = `It's a Tie!`;
       setTimeout(startGame, 3000);
   }
 }
 
 function switchTokenInHeader() {
+  console.log("turn token");
   if (game.turn === 'player2') {
     currentTurnToken.src = 'assets/lobster.png';
   } else {
@@ -66,7 +66,7 @@ function switchTokenInHeader() {
 function updateWins() {
   if (game.player1.wins.length === 1) {
     player1Wins.innerText = `1 Win`;
-  } else if (game.player1.wins.length === 1) {
+  } else if (game.player2.wins.length === 1) {
     player2Wins.innerText = `1 Win`;
   } else {
     player1Wins.innerText = `${game.player1.wins.length} Wins`;
