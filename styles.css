@@ -11,6 +11,7 @@ body {
   justify-content: stretch;
   background-image: url("assets/waves6.jpg");
   background-size: cover;
+  font-family: 'Mukta', sans-serif;
 }
 
 .player-wins {
@@ -26,5 +27,67 @@ main {
   margin-top: 0;
   background: rgba(241, 247, 250, 0.7);
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+img {
+  height: 70px;
+  width: 70px;
+}
+
+.instructions {
+  padding-top: 0;
+  margin-top: 8vw;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7vw;
+  font-size: 1.7em;
+  color: white;
+}
+
+.game-board {
+  width: 35vw;
+  height: 30vw;
+  display: grid;
+  /* justify-content: space-around; */
+  /* gap: 1px; */
+  /* background-color: #014974; */
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.game-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: 5px solid #014974;
+}
+
+.game-square:nth-child(1),
+.game-square:nth-child(2),
+.game-square:nth-child(3) {
+  border-top: none;
+}
+
+.game-square:nth-child(1),
+.game-square:nth-child(4),
+.game-square:nth-child(7) {
+  border-left: none;
+}
+.game-square:nth-child(3),
+.game-square:nth-child(6),
+.game-square:nth-child(9) {
+  border-right: none;
+}
+
+.game-square:nth-child(7),
+.game-square:nth-child(8),
+.game-square:nth-child(9) {
+  border-bottom: none;
 }
