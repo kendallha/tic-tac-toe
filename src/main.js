@@ -3,7 +3,7 @@ var gameBoard = document.querySelector('#gameBoard');
 var gameInfo = document.querySelector('#gameInfo');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
-var currentTurnToken = document.querySelector('#turnToken');
+var currentTurnToken = document.querySelector('#token');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
 //event listeners
@@ -17,8 +17,8 @@ function startGame() {
   for (var i = 0; i < gameSquare.length; i++) {
     gameSquare[i].innerHTML = '';
   }
-  gameInfo.innerHTML = `<h1 id="gameHeading" class="game-heading">It's <img id="turnToken" class="turn-token" src="assets/lobster.png" />'s Turn</h1>`
-  switchTokenInHeader();
+  gameInfo.innerHTML = `<h1>It's <img id="token" class="turn-token" src="assets/octopus.png">'s Turn</h1>`
+  // switchTokenInHeader();
 }
 
 function takeATurn() {
@@ -40,27 +40,26 @@ function addToken(event) {
 
 function evaluateGameStatus() {
   if (game.winner === 'player1') {
-    gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
+    gameInfo.innerHTML = `<h1 class="instructions"><img id="token"
     class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
     setTimeout(startGame, 3000);
   } else if (game.winner === 'player2') {
-      gameInfo.innerHTML = `<h1 class="instructions"><img id="turnToken"
+      gameInfo.innerHTML = `<h1 class="instructions"><img id="token"
       class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
       setTimeout(startGame, 3000);
   } else if (game.checkForTie()) {
-      gameInfo.innerHTML = `It's a Tie!`;
+      gameInfo.innerHTML = `<h1 class="instructions">It's a Tie!</h2>`
       setTimeout(startGame, 3000);
   }
 }
 
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
-    currentTurnToken.src = "assets/lobster.png";
+    currentTurnToken.src = "./assets/lobster.png";
   } else {
-    currentTurnToken.src = "assets/octopus.png";
+    currentTurnToken.src = "./assets/octopus.png";
   }
 }
-
 
 function updateScoreCard() {
 
