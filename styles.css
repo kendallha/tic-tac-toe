@@ -28,7 +28,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.7em;
+  font-size: 4vh;
   color: #014974;
 }
 
@@ -37,16 +37,21 @@ img {
   width: 85px;
 }
 
-h1 {
-  word-spacing: 22px;
-}
-
-.instructions {
+.header {
+  display: flex;
+  align-items: center;
   letter-spacing: 2px;
-  margin-top: 10vh;
+  word-spacing: 22px;
+  margin-top: 5vh;
+  font-weight: 800;
 }
 
-header {
+.turn-token {
+  padding-left: 25px;
+  padding- right: 20px;
+}
+
+.score-card {
   display: flex;
   flex-direction: column;
   margin-top: 7vw;
