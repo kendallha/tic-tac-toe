@@ -42,8 +42,9 @@ class Game {
         this.player2.wins.push(this.gameId);
         this.winner = 'player2';
       }
-    } this.player1.saveWinsToStorage;
-      this.player2.saveWinsToStorage;
+    }
+      this.player1.saveWinsToStorage();
+      this.player2.saveWinsToStorage();
   }
 
   checkForTie() {
