@@ -1,3 +1,5 @@
+/* GLOBAL STYLING*/
+
 html {
   height: 100%;
   width: 100%;
@@ -13,12 +15,31 @@ body {
   font-family: 'Mukta', sans-serif;
 }
 
+img {
+  height: 85px;
+  width: 85px;
+}
+
+/* PLAYER SCORES SIDE-BARS*/
+
 .player-wins {
   height: 100%;
   width: 25vw;
   display: flex;
   justify-content: center;
 }
+
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8vh;
+  font-size: 2em;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/* CENTER GAMEPLAY AREA */
 
 main {
   height: 100vw;
@@ -32,11 +53,6 @@ main {
   color: #014974;
 }
 
-img {
-  height: 85px;
-  width: 85px;
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -47,18 +63,10 @@ img {
 }
 
 .turn-token {
-  padding-left: 25px;
-  padding- right: 20px;
+  padding: 0 5px 0 25px;
 }
 
-.score-card {
-  display: flex;
-  flex-direction: column;
-  margin-top: 7vw;
-  font-size: 2em;
-  color: white;
-  letter-spacing: 2px;
-}
+/* GAME BOARD*/
 
 .game-board {
   width: 35vw;
