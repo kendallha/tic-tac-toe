@@ -19,10 +19,8 @@ class Game {
     if (this.turn === 'player1' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)) {
         this.player1Squares.push(square);
         this.turn = 'player2';
-        console.log(this.turn);
       } else if (this.turn === 'player2' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)) {
         this.player2Squares.push(square);
-        console.log(this.player2Squares);
         this.turn = 'player1';
         console.log(this.turn);
   }
