@@ -22,7 +22,6 @@ class Game {
       } else if (this.turn === 'player2' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)) {
         this.player2Squares.push(square);
         this.turn = 'player1';
-        console.log(this.turn);
   }
 
     this.checkForWinner();

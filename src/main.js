@@ -1,13 +1,16 @@
+
 //Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
 var gameInfo = document.querySelector('#gameInfo');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
-var currentTurnToken = document.querySelector('#token');
+// var currentTurnToken = document.querySelector('#token');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
-var octopusImage = `<img class="player-token" src="assets/octopus.png"/>`;
-var lobsterImage = `<img class="player-token" src="assets/lobster.png"/>`;
+var octopusImage =
+`<img class="turn-token" src="assets/octopus.png"/>`;
+var lobsterImage =
+`<img class="turn-token" src="assets/lobster.png"/>`;
 //event listeners
 window.addEventListener('load', startGame);
 gameBoard.addEventListener('click', takeATurn);
@@ -32,7 +35,6 @@ function takeATurn() {
   displayGameResult();
   updateScoreCard();
 }
-
 
 function addPlayerTokens(playerSquares, tokenImage) {
   for (var i = 0; i < gameSquare.length; i++) {
@@ -80,12 +82,11 @@ function switchTokenInHeader() {
 function updateScoreCard() {
   player1Wins.innerText = `${game.player1.wins.length} Wins`;
   player2Wins.innerText = `${game.player2.wins.length} Wins`;
+    if (game.player1.wins.length === 1) {
+      player1Wins.innerText = `1 Win`;
+    }
 
-  if (game.player1.wins.length === 1) {
-    player1Wins.innerText = `1 Win`;
-  }
-
-  if (game.player2.wins.length === 1) {
-    player2Wins.innerText = `1 Win`;
+    if (game.player2.wins.length === 1) {
+      player2Wins.innerText = `1 Win`;
   }
 }
