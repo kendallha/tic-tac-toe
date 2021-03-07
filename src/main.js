@@ -21,22 +21,32 @@ function startGame() {
 }
 
 function takeATurn() {
-  addToken(event);
+  placeToken(event);
   switchTokenInHeader();
   displayGameResult();
   updateScoreCard();
 }
 
-function addToken(event) {
-  if (game.turn === 'player1' && !game.player1Squares.includes(event.target.id)
-    && !game.player2Squares.includes(event.target.id))  {
-    event.target.innerHTML = '<img class="player-token" src="assets/octopus.png"/>';
-  } else if (game.turn === 'player2' && !game.player1Squares.includes(event.target.id)
-    && !game.player2Squares.includes(event.target.id)){
-    event.target.innerHTML = '<img class="player-token" src="assets/lobster.png"/>';
+function addPlayer1Tokens() {
+  for (var i = 0; i < gameSquare.length; i++) {
+    if (game.player1Squares.includes(gameSquare[i].id)) {
+      gameSquare[i].innerHTML = '<img class="player-token" src="assets/octopus.png"/>';
+    }
   }
+}
 
+function addPlayer2Tokens() {
+  for (var i = 0; i < gameSquare.length; i++) {
+    if (game.player2Squares.includes(gameSquare[i].id)) {
+      gameSquare[i].innerHTML = '<img class="player-token" src="assets/lobster.png"/>';
+    }
+  }
+}
+
+function placeToken(event) {
   game.makeMove(event.target.id);
+  addPlayer1Tokens();
+  addPlayer2Tokens();
 }
 
 function updateHeader(content) {
