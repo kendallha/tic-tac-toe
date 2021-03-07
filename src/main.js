@@ -23,49 +23,48 @@ function startGame() {
 function takeATurn() {
   addToken(event);
   switchTokenInHeader();
-  evaluateGameStatus();
+  displayGameResult();
   updateScoreCard();
 }
 
 function addToken(event) {
-  if (game.turn === 'player1') {
+  if (game.turn === 'player1' && !game.player1Squares.includes(event.target.id)
+    && !game.player2Squares.includes(event.target.id))  {
     event.target.innerHTML = '<img class="player-token" src="assets/octopus.png"/>';
-  } else {
+  } else if (game.turn === 'player2' && !game.player1Squares.includes(event.target.id)
+    && !game.player2Squares.includes(event.target.id)){
     event.target.innerHTML = '<img class="player-token" src="assets/lobster.png"/>';
   }
 
   game.makeMove(event.target.id);
 }
 
-// function declareWinner(winner) {
-//   gameInfo.innerHTML = `<h1 class="instructions"><img id="token"
-//   class="turn-token" src= winner /> Wins!</h1>`;
-//   setTimeout(startGame, 3000);
-// }
-function evaluateGameStatus() {
+function updateHeader(content) {
+  gameInfo.innerHTML = `<h1 class="header">${content}</h1>`;
+}
+
+function declareWinner(gameResult) {
+  updateHeader(gameResult);
+  setTimeout(startGame, 3000);
+}
+
+function displayGameResult() {
   if (game.winner === 'player1') {
-    gameInfo.innerHTML = `<h1 class="header"><img id="token"
-    class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
-    setTimeout(startGame, 3000);
-    // declareWinner("assets/octopus.png");
+    declareWinner(`<img id="token" class="turn-token" src="assets/octopus.png"/> Wins!`);
   } else if (game.winner === 'player2') {
-      gameInfo.innerHTML = `<h1 class="header"><img id="token"
-      class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
-      setTimeout(startGame, 3000);
-      // declareWinner("/Users/kendallhaworth/turing/mod1/tic-tac-toe/assets/lobster.png");
+      declareWinner(`<img id="token" class="turn-token" src="assets/lobster.png"/> Wins!`);
   } else if (game.checkForTie()) {
-      gameInfo.innerHTML = `<h1 class="header">It's a Draw!</h2>`
-      setTimeout(startGame, 3000);
+      declareWinner(`It's a draw!`);
   }
 }
 
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
     // currentTurnToken.src = "./assets/lobster.png";
-    gameInfo.innerHTML = `<h1 class="header">It's <img id="token" class="turn-token" src="assets/lobster.png">'s Turn</h1>`;
+    updateHeader(`It's <img id="token" class="turn-token" src="assets/lobster.png">'s Turn`);
   } else {
     // currentTurnToken.src = "./assets/octopus.png";
-    gameInfo.innerHTML = `<h1 class="header">It's <img id="token" class="turn-token" src="assets/octopus.png">'s Turn</h1>`;
+    updateHeader(`It's <img id="token" class="turn-token" src="assets/octopus.png">'s Turn`);
   }
 }
 
