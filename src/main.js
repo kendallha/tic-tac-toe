@@ -78,13 +78,13 @@ function switchTokenInHeader() {
 }
 
 function updateScoreCard() {
-  player1Wins.innerText = `${game.player1.wins.length} Wins`;
-  player2Wins.innerText = `${game.player2.wins.length} Wins`;
-    if (game.player1.wins.length === 1) {
+  player1Wins.innerText = `${game.player1.wins} Wins`;
+  player2Wins.innerText = `${game.player2.wins} Wins`;
+    if (game.player1.wins === 1) {
       player1Wins.innerText = `1 Win`;
     }
 
-    if (game.player2.wins.length === 1) {
+    if (game.player2.wins === 1) {
       player2Wins.innerText = `1 Win`;
   }
 }

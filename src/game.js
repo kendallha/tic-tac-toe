@@ -37,11 +37,11 @@ class Game {
     for (var i = 0; i < winningCombos.length; i++) {
       if ((this.player1Squares.includes(winningCombos[i][0])) &&
         (this.player1Squares.includes(winningCombos[i][1])) && (this.player1Squares.includes(winningCombos[i][2]))) {
-          this.player1.wins.push(this.gameId);
+          this.player1.wins++;
           this.winner = 'player1';
         } else if ((this.player2Squares.includes(winningCombos[i][0])) &&
           (this.player2Squares.includes(winningCombos[i][1])) && (this.player2Squares.includes(winningCombos[i][2]))) {
-            this.player2.wins.push(this.gameId);
+            this.player2.wins++;
             this.winner = 'player2';
       }
     }
