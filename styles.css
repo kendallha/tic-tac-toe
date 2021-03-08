@@ -70,6 +70,7 @@ main {
   align-items: center;
   justify-content: center;
   border: 5px solid #014974;
+  cursor: pointer;
 }
 
 .game-square:nth-child(1),

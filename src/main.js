@@ -1,5 +1,5 @@
 
-//Query selector vars:
+// Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
 var gameInfo = document.querySelector('#gameInfo');
 var player1Wins = document.querySelector('#player1Wins');
@@ -7,15 +7,11 @@ var player2Wins = document.querySelector('#player2Wins');
 // var currentTurnToken = document.querySelector('#token');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
-var octopusImage =
-`<img class="turn-token" src="assets/octopus.png"/>`;
-var lobsterImage =
-`<img class="turn-token" src="assets/lobster.png"/>`;
-//event listeners
-window.addEventListener('load', startGame);
+// event listeners
+window.addEventListener('load', startNewGame);
 gameBoard.addEventListener('click', takeATurn);
 
-function startGame() {
+function startNewGame() {
   game = new Game(Date.now());
   game.keepPlayerScores();
   updateScoreCard();
@@ -45,6 +41,8 @@ function addPlayerTokens(playerSquares, tokenImage) {
 }
 
 function placeToken(event) {
+  var octopusImage = `<img class="turn-token" src="assets/octopus.png"/>`;
+  var lobsterImage = `<img class="turn-token" src="assets/lobster.png"/>`;
   game.makeMove(event.target.id);
   addPlayerTokens(game.player1Squares, octopusImage);
   addPlayerTokens(game.player2Squares, lobsterImage);
@@ -56,15 +54,15 @@ function updateHeader(content) {
 
 function declareWinner(gameResult) {
   updateHeader(gameResult);
-  setTimeout(startGame, 3000);
+  setTimeout(startNewGame, 3000);
 }
 
 function displayGameResult() {
   if (game.winner === 'player1') {
-    declareWinner(`${octopusImage} Wins!`);
+    declareWinner(`<img class="turn-token" src="assets/octopus.png"/> Wins!`);
   } else if (game.winner === 'player2') {
-      declareWinner(`${lobsterImage} Wins!`);
-  } else if (game.checkForTie()) {
+      declareWinner(`<img class="turn-token" src="assets/lobster.png"/> Wins!`);
+  } else if (game.checkForDraw()) {
       declareWinner(`It's a draw!`);
   }
 }
@@ -72,10 +70,10 @@ function displayGameResult() {
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
     // currentTurnToken.src = "./assets/lobster.png";
-    updateHeader(`It's ${lobsterImage}'s Turn`);
+    updateHeader(`It's <img class="turn-token" src="assets/lobster.png"/>'s Turn`);
   } else {
     // currentTurnToken.src = "./assets/octopus.png";
-    updateHeader(`It's ${octopusImage}'s Turn`);
+    updateHeader(`It's <img class="turn-token" src="assets/octopus.png"/>'s Turn`);
   }
 }
 

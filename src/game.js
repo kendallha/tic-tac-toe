@@ -16,16 +16,18 @@ class Game {
   }
 
   makeMove(square) {
-    if (this.turn === 'player1' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)) {
-        this.player1Squares.push(square);
-        this.turn = 'player2';
-      } else if (this.turn === 'player2' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)) {
-        this.player2Squares.push(square);
-        this.turn = 'player1';
+    if (this.turn === 'player1' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)
+      && !this.winner) {
+      this.player1Squares.push(square);
+      this.turn = 'player2';
+    } else if (this.turn === 'player2' && !this.player1Squares.includes(square) && !this.player2Squares.includes(square)
+      && !this.winner) {
+      this.player2Squares.push(square);
+      this.turn = 'player1';
   }
 
     this.checkForWinner();
-    this.checkForTie();
+    this.checkForDraw();
   }
 
 
@@ -47,12 +49,10 @@ class Game {
       this.player2.saveWinsToStorage();
   }
 
-  checkForTie() {
+  checkForDraw() {
     if ((this.player1Squares.length + this.player2Squares.length) === 9 ) {
+      this.winner = "Draw";
       return true;
     }
   }
-
-
-
-  }
+}
