@@ -11,8 +11,8 @@ body {
 }
 
 img {
-  height: 85px;
-  width: 85px;
+  height: 100px;
+  width: 100px;
 }
 
 /* PLAYER SCORES SIDE-BARS*/
@@ -27,6 +27,11 @@ img {
   font-size: 2em;
   color: white;
   letter-spacing: 2px;
+}
+
+.player-token {
+  height: 85px;
+  width: 85px;
 }
 
 /* CENTER GAMEPLAY AREA */
@@ -44,7 +49,7 @@ main {
 .header {
   display: flex;
   align-items: center;
-  font-size: 4em;
+  font-size: 5em;
   letter-spacing: 2px;
   word-spacing: 22px;
   margin-top: 5vh;
