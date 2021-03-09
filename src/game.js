@@ -57,7 +57,7 @@ class Game {
   }
 
   checkForDraw() {
-    if ((this.player1Squares.length + this.player2Squares.length) === 9 ) {
+    if ((this.player1Squares.length + this.player2Squares.length) === 9 && !this.winner) {
       this.winner = 'Draw';
       return true;
     }
