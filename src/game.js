@@ -16,7 +16,8 @@ class Game {
   }
 
   checkMoveValidity(square) {
-    return (!this.player1Squares.includes(square) && !this.player2Squares.includes(square) && !this.winner && square !== '');
+    return (!this.player1Squares.includes(square) && !this.player2Squares.includes(square)
+    && !this.winner && square !== '');
 }
 
   makeMove(square) {
@@ -37,7 +38,8 @@ class Game {
     ['b','e','h'],['c','f','i'],['c','e','g'],['a','e','i']];
     for (var i = 0; i < winningCombos.length; i++) {
       if ((playerSquares.includes(winningCombos[i][0])) &&
-        (playerSquares.includes(winningCombos[i][1])) && (playerSquares.includes(winningCombos[i][2])) && !this.winner) {
+        (playerSquares.includes(winningCombos[i][1])) && (playerSquares.includes(winningCombos[i][2]))
+        && !this.winner) {
         return true;
       }
     }
@@ -57,7 +59,8 @@ class Game {
   }
 
   checkForDraw() {
-    if ((this.player1Squares.length + this.player2Squares.length) === 9 && !this.winner) {
+    if ((this.player1Squares.length + this.player2Squares.length) === 9 && this.winner !== 'player1'
+      && this.winner !== 'player2') {
       this.winner = 'Draw';
       return true;
     }
