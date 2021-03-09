@@ -12,7 +12,7 @@
 ## Walkthrough:
 
 * Upon page load, a new 2-player game is automatically started.
-  <img width="1000" height="500" src="./assets/Screen Shot 2021-03-09 at 9.56.10 AM.png">
+  <img width="600" height="350" src="./assets/Screen Shot 2021-03-09 at 9.56.10 AM.png">
 * The middle section header shows who's turn it is. Click anywhere on the tic-tac-toe grid to place a token. Tokens can only
   be placed in empty squares.
 * If either player places 3 tokens in a row, the header will update to declare the winner. The player's score will update to  reflect the win.
