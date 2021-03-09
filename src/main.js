@@ -1,13 +1,10 @@
-
-// Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
 var gameInfo = document.querySelector('#gameInfo');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
-// var currentTurnToken = document.querySelector('#token');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
-// event listeners
+
 window.addEventListener('load', startNewGame);
 gameBoard.addEventListener('click', takeATurn);
 
@@ -69,10 +66,8 @@ function evaluateGameResult() {
 
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
-    // currentTurnToken.src = "./assets/lobster.png";
     updateHeader(`It's <img class="turn-token" src="assets/lobster.png"/>'s Turn`);
   } else {
-    // currentTurnToken.src = "./assets/octopus.png";
     updateHeader(`It's <img class="turn-token" src="assets/octopus.png"/>'s Turn`);
   }
 }
