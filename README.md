@@ -12,12 +12,14 @@
 ## Walkthrough:
 
 * Upon page load, a new 2-player game is automatically started.
-  <img width="1000" height="500" src="./assets/Screen Shot 2021-03-09 at 9.41.28 AM.png">
+  <img width="1000" height="500" src="assets/Screen Shot 2021-03-09 at 9.41.28 AM.png">
 * The middle section header shows who's turn it is. Click anywhere on the tic-tac-toe grid to place a token. Tokens can only
   be placed in empty squares.
 * If either player places 3 tokens in a row, the header will update to declare the winner. The player's score will update to  reflect the win.
+
  ![GIF showing player 1 (octopus) winning a game](https://media.giphy.com/media/3fgZ75t3bR5d9bZlZa/giphy.gif)
 * If the board is filled without either player placing 3 tokens in a row, the header will update to declare the game a draw.
+
  ![GIF demonstrating a tie game](https://media.giphy.com/media/TrgVF0acPCz82fxyLA/giphy.gif)
 * Once a winner or a draw is declared, a timeout starts to reset the game board and begin a new game. Tokens cannot be
   added during this timeout.
