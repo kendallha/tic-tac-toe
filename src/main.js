@@ -1,83 +1,83 @@
-//Query selector vars:
 var gameBoard = document.querySelector('#gameBoard');
 var gameInfo = document.querySelector('#gameInfo');
 var player1Wins = document.querySelector('#player1Wins');
 var player2Wins = document.querySelector('#player2Wins');
-var currentTurnToken = document.querySelector('#token');
 var gameSquare = document.querySelectorAll('.game-square');
 var game;
-//event listeners
-window.addEventListener('load', startGame);
+
+window.addEventListener('load', startNewGame);
 gameBoard.addEventListener('click', takeATurn);
 
-function startGame() {
+function startNewGame() {
   game = new Game(Date.now());
   game.keepPlayerScores();
   updateScoreCard();
-  for (var i = 0; i < gameSquare.length; i++) {
-    gameSquare[i].innerHTML = '';
-  }
+  resetBoard();
   switchTokenInHeader();
+}
+
+function resetBoard() {
+  for (var i = 0; i < gameSquare.length; i++) {
+      gameSquare[i].innerHTML = '';
+  }
 }
 
 function takeATurn() {
-  addToken(event);
+  placeToken(event);
   switchTokenInHeader();
-  evaluateGameStatus();
+  evaluateGameResult();
   updateScoreCard();
 }
 
-function addToken(event) {
-  if (game.turn === 'player1') {
-    event.target.innerHTML = '<img class="player-token" src="assets/octopus.png"/>';
-  } else {
-    event.target.innerHTML = '<img class="player-token" src="assets/lobster.png"/>';
+function addPlayerTokens(playerSquares, tokenImage) {
+  for (var i = 0; i < gameSquare.length; i++) {
+    if (playerSquares.includes(gameSquare[i].id)) {
+      gameSquare[i].innerHTML = `${tokenImage}`;
+    }
   }
-
-  game.makeMove(event.target.id);
 }
 
-// function declareWinner(winner) {
-//   gameInfo.innerHTML = `<h1 class="instructions"><img id="token"
-//   class="turn-token" src= winner /> Wins!</h1>`;
-//   setTimeout(startGame, 3000);
-// }
-function evaluateGameStatus() {
+function placeToken(event) {
+  game.makeMove(event.target.id);
+  addPlayerTokens(game.player1Squares, game.player1.token);
+  addPlayerTokens(game.player2Squares, game.player2.token);
+}
+
+function updateHeader(content) {
+  gameInfo.innerHTML = `<h1 class="header">${content}</h1>`;
+}
+
+function displayWinner(gameResult) {
+  updateHeader(gameResult);
+  setTimeout(startNewGame, 3000);
+}
+
+function evaluateGameResult() {
   if (game.winner === 'player1') {
-    gameInfo.innerHTML = `<h1 class="header"><img id="token"
-    class="turn-token" src="assets/octopus.png"/> Wins!</h1>`;
-    setTimeout(startGame, 3000);
-    // declareWinner("assets/octopus.png");
+    displayWinner(`${game.player1.token} Wins!`)
   } else if (game.winner === 'player2') {
-      gameInfo.innerHTML = `<h1 class="header"><img id="token"
-      class="turn-token" src="assets/lobster.png"/> Wins!</h1>`;
-      setTimeout(startGame, 3000);
-      // declareWinner("/Users/kendallhaworth/turing/mod1/tic-tac-toe/assets/lobster.png");
-  } else if (game.checkForTie()) {
-      gameInfo.innerHTML = `<h1 class="header">It's a Draw!</h2>`
-      setTimeout(startGame, 3000);
+      displayWinner(`${game.player2.token} Wins!`);
+  } else if (game.checkForDraw()) {
+      displayWinner(`It's a draw!`);
   }
 }
 
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
-    // currentTurnToken.src = "./assets/lobster.png";
-    gameInfo.innerHTML = `<h1 class="header">It's <img id="token" class="turn-token" src="assets/lobster.png">'s Turn</h1>`;
+    updateHeader(`It's ${game.player2.token}'s Turn`);
   } else {
-    // currentTurnToken.src = "./assets/octopus.png";
-    gameInfo.innerHTML = `<h1 class="header">It's <img id="token" class="turn-token" src="assets/octopus.png">'s Turn</h1>`;
+    updateHeader(`It's ${game.player1.token}'s Turn`);
   }
 }
 
 function updateScoreCard() {
-  player1Wins.innerText = `${game.player1.wins.length} Wins`;
-  player2Wins.innerText = `${game.player2.wins.length} Wins`;
+  player1Wins.innerText = `${game.player1.wins} Wins`;
+  player2Wins.innerText = `${game.player2.wins} Wins`;
+    if (game.player1.wins === 1) {
+      player1Wins.innerText = `1 Win`;
+    }
 
-  if (game.player1.wins.length === 1) {
-    player1Wins.innerText = `1 Win`;
-  }
-
-  if (game.player2.wins.length === 1) {
-    player2Wins.innerText = `1 Win`;
+    if (game.player2.wins === 1) {
+      player2Wins.innerText = `1 Win`;
   }
 }

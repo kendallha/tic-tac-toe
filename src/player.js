@@ -2,7 +2,7 @@ class Player {
   constructor(id, token) {
     this.id = id;
     this.token = token;
-    this.wins = [];
+    this.wins = 0;
   }
 
   saveWinsToStorage() {
@@ -12,9 +12,7 @@ class Player {
 
   retrieveWinsFromStorage() {
     var savedWins = localStorage.getItem(`savedWins${this.id}`);
-    var parsedWinsArray = JSON.parse(savedWins) || [];
-    for (var i = 0; i < parsedWinsArray.length; i++) {
-      this.wins.push(parsedWinsArray[i]);
-    }
+    var parsedWins = JSON.parse(savedWins) || 0;
+    this.wins = parsedWins;
   }
 }
