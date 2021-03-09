@@ -28,7 +28,7 @@ function resetBoard() {
 function takeATurn() {
   placeToken(event);
   switchTokenInHeader();
-  displayGameResult();
+  evaluateGameResult();
   updateScoreCard();
 }
 
@@ -52,18 +52,18 @@ function updateHeader(content) {
   gameInfo.innerHTML = `<h1 class="header">${content}</h1>`;
 }
 
-function declareWinner(gameResult) {
+function displayWinner(gameResult) {
   updateHeader(gameResult);
   setTimeout(startNewGame, 3000);
 }
 
-function displayGameResult() {
+function evaluateGameResult() {
   if (game.winner === 'player1') {
-    declareWinner(`<img class="turn-token" src="assets/octopus.png"/> Wins!`);
+    displayWinner(`<img class="turn-token" src="assets/octopus.png"/> Wins!`);
   } else if (game.winner === 'player2') {
-      declareWinner(`<img class="turn-token" src="assets/lobster.png"/> Wins!`);
+      displayWinner(`<img class="turn-token" src="assets/lobster.png"/> Wins!`);
   } else if (game.checkForDraw()) {
-      declareWinner(`It's a draw!`);
+      displayWinner(`It's a draw!`);
   }
 }
 
