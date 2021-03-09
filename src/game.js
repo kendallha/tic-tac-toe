@@ -1,7 +1,7 @@
 class Game {
   constructor(id) {
-    this.player1 = new Player(1, 'octopus');
-    this.player2 = new Player(2, 'lobster');
+    this.player1 = new Player(1, `<img class="turn-token" src="assets/octopus.png"/>`);
+    this.player2 = new Player(2, `<img class="turn-token" src="assets/lobster.png"/>`);
     this.turn = 'player1';
     this.gameId = id;
     this.player1Squares = [];
@@ -37,7 +37,7 @@ class Game {
     ['b','e','h'],['c','f','i'],['c','e','g'],['a','e','i']];
     for (var i = 0; i < winningCombos.length; i++) {
       if ((playerSquares.includes(winningCombos[i][0])) &&
-        (playerSquares.includes(winningCombos[i][1])) && (playerSquares.includes(winningCombos[i][2]))) {
+        (playerSquares.includes(winningCombos[i][1])) && (playerSquares.includes(winningCombos[i][2])) && !this.winner) {
         return true;
       }
     }

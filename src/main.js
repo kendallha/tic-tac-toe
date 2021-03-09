@@ -38,11 +38,9 @@ function addPlayerTokens(playerSquares, tokenImage) {
 }
 
 function placeToken(event) {
-  var octopusImage = `<img class="turn-token" src="assets/octopus.png"/>`;
-  var lobsterImage = `<img class="turn-token" src="assets/lobster.png"/>`;
   game.makeMove(event.target.id);
-  addPlayerTokens(game.player1Squares, octopusImage);
-  addPlayerTokens(game.player2Squares, lobsterImage);
+  addPlayerTokens(game.player1Squares, game.player1.token);
+  addPlayerTokens(game.player2Squares, game.player2.token);
 }
 
 function updateHeader(content) {
@@ -56,9 +54,9 @@ function displayWinner(gameResult) {
 
 function evaluateGameResult() {
   if (game.winner === 'player1') {
-    displayWinner(`<img class="turn-token" src="assets/octopus.png"/> Wins!`);
+    displayWinner(`${game.player1.token} Wins!`)
   } else if (game.winner === 'player2') {
-      displayWinner(`<img class="turn-token" src="assets/lobster.png"/> Wins!`);
+      displayWinner(`${game.player2.token} Wins!`);
   } else if (game.checkForDraw()) {
       displayWinner(`It's a draw!`);
   }
@@ -66,9 +64,9 @@ function evaluateGameResult() {
 
 function switchTokenInHeader() {
   if (game.turn === 'player2') {
-    updateHeader(`It's <img class="turn-token" src="assets/lobster.png"/>'s Turn`);
+    updateHeader(`It's ${game.player2.token}'s Turn`);
   } else {
-    updateHeader(`It's <img class="turn-token" src="assets/octopus.png"/>'s Turn`);
+    updateHeader(`It's ${game.player1.token}'s Turn`);
   }
 }
 

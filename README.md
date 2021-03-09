@@ -1,6 +1,6 @@
 # Tic-Tac-Toe Final Solo Project
 
-## Contributors
+## Contributors:
 * [Kendall Haworth](https://github.com/kendallha)
 
 ## Technologies Used:
@@ -23,7 +23,7 @@
   added during this timeout.
 * Player scores are visible in the left and right hand columns, and are carried through the start of a new game and page refresh.
 
-## Learning Goals
+## Learning Goals:
 * The project assignment can be found [here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html)
   * Solidify and demonstrate your understanding of:
     * DRY JavaScript
@@ -33,7 +33,7 @@
   * Iterate through/filter DOM elements using for loops
   * Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on  an outside “answer” to a logical challenge
 
-## Road Map
+## Road Map:
 * Save copies of winning game boards under each player's score
 * Mobile Version
-* Allow players to choose their token 
+* Allow players to choose their token
